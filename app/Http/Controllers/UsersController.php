@@ -136,8 +136,6 @@ class UsersController extends Controller
         ]);
        
         $hashedPassword = Auth::user()->password;
-
-        //dd($request->newpassword);
        
         if (\Hash::check($request->oldpassword , $hashedPassword)) {
             if (\Hash::check($request->newpassword , $hashedPassword)) {               
