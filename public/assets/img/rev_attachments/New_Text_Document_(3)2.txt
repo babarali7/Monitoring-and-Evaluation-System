@@ -1,0 +1,19 @@
+SELECT rbd.RBD_ID, rbd.RAG_ID, rbd.REV_ID, rbd.RBD_DECISION, rat.RAT_ID, rat.RAT_ACTION, ratf.RATF_ID, ratf.RATF_DATE, ratf.RATF_STATUS
+FROM `rev_bod_decisions` as rbd 
+LEFT JOIN
+rev_actions_taken as rat
+ON
+rbd.`RBD_ID` = rat.RBD_ID
+LEFT JOIN 
+rev_action_timeframe as ratf
+ON
+rat.RAT_ID = ratf.RAT_ID
+WHERE
+rbd.RAG_ID = 23
+
+
+GPI batkhela
+
+=======
+gpi_batkhela@kptevta.gov.pk
+12345678

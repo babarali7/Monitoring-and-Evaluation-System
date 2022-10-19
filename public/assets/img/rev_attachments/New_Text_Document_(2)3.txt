@@ -1,0 +1,78 @@
+=========================
+
+SELECT i.*, (SELECT sq.Namesq FROM StaffingQualification as sq, StaffingTraining  as st where i.`InstituteID` = st.InstituteID AND st.stid = sq.stid AND sq.Designation LIKE "%Principal%" GROUP BY i.`InstituteID` ) as Principal 
+FROM `Institute` as i
+
+================================
+
+1. rev_time_frame
+2. rev_master
+3. rev_agenda
+4. rev_bod_decisions
+5. rev_actions_taken
+6. rev_action_timeframe
+7. rev_actions_marked
+8. rev_attachments
+9. rev_general_issues
+10. rev_genral_issues_actions
+11. rev_general_issues_timeframe
+
+
+============================================
+
+Rev detail 
+
+SELECT rag.`RAG_ID`, rag.`RAG_ITEM_NO`, rag.`RAG_TITLE` , rbd.RBD_ID, rbd.RBD_DECISION, rat.RAT_ID, rat.RAT_ACTION, ratf.RATF_ID, ratf.RATF_DATE, ratf.RATF_STATUS, ram.RAM_ID, ram.GROUP_ID, ug.GROUP_NAME
+FROM `rev_agenda` as rag
+LEFT JOIN
+rev_bod_decisions as rbd
+ON
+rag.RAG_ID = rbd.RAG_ID
+LEFT JOIN
+rev_actions_taken as rat
+ON
+rbd.RBD_ID = rat.RBD_ID
+LEFT JOIN
+rev_action_timeframe as ratf
+ON
+rat.RAT_ID = ratf.RAT_ID
+LEFT JOIN
+rev_actions_marked as ram
+ON
+rat.RAT_ID = ram.RAT_ID
+LEFT JOIN
+usr_group as ug
+ON
+ram.GROUP_ID = ug.GROUP_ID
+WHERE
+rag.REV_ID = 6
+
+===================
+remove agenda query
+
+SELECT rbd.RBD_ID, rbd.RAG_ID, rbd.REV_ID, rbd.`RBD_DECISION`, rat.RAT_ID, rat.RAT_ACTION, ratf.RATF_ID, ratf.RATF_DATE, ram.RAM_ID, ram.GROUP_ID 
+FROM `rev_bod_decisions` as rbd
+LEFT JOIN
+rev_actions_taken as rat
+ON
+rbd.RBD_ID = rat.RBD_ID
+LEFT JOIN
+rev_action_timeframe as ratf
+ON
+rat.RAT_ID = ratf.RAT_ID
+LEFT JOIN
+rev_actions_marked as ram
+ON
+rat.RAT_ID = ram.RAT_ID
+WHERE
+rbd.RAG_ID = 24 
+
+==================================
+
+ ////////////////// important notes
+
+change in general model => added do_upload_by_types
+check tables of attachment
+add rev_attachments folder in img folder
+
+

@@ -1,0 +1,93 @@
+http://penguinengine.com/junkremoval/earnings/online_payments
+
+https://mocha3021.mochahost.com:2083/?fbclid=IwAR1Rz7o_4jWWx0vK17zxSIVevvLg2WIWyP9xcHMRMwt8X0rHdW2uf9-tKig
+
+user:sameeral
+
+pass:khansam1
+
+
+
+select * from event_detail as ed, event_employee as ee 
+WHERE
+ee.EVVENT_DETAIL_ID = ed.EVENT_DETAIL_ID
+AND
+ed.EVENT_START_TIME BETWEEN curdate() AND NOW() + INTERVAL 6 DAY
+
+
+SELECT ed.*, ee.*, ep.EMP_ID, ep.EMP_NAME, id.IMG_ID, id.IMG_NAME, id.IMG_CATEGORY 
+from event_detail as ed, event_employee as ee, employee_profile as ep, img_details as id  
+                           WHERE 
+                           ee.EVVENT_DETAIL_ID = ed.EVENT_DETAIL_ID
+                           AND
+                           ee.EMP_ID = ep.EMP_ID
+                           AND
+                           ep.EMP_ID = id.IMG_PARENT_ID
+                           AND
+                           id.IMG_CATEGORY = 'EMP-ATTACHMENT'
+                           AND
+                           ed.EVENT_DETAIL_ID = 8
+
+
+
+
+
+
+new customer = customer profile
+
+add bank account details = net income
+
+transactions
+
+withdraw
+
+
+transactions page
+
+same tabs like this
+
+pending earnings - online payments - cash - cheque - total earnings
+
+pending earnings
+invoice number - created date - amount - total amount (invoice table)
+
+total amount 
+for loop (services and material - sum up)
+
+table names
+transaction_detail
+invoice_detail
+
+
+condition is where flag is not paid (group by - flag (invoice_paid) )
+
+=================================================
+
+online payments (tables)
+transaction_detail
+invoice_detail
+
+
+
+transacttion id - transaction date - invoive number - payment type - amount - tip - total amount 
+amouunt = paid_amount
+
+
+Cash
+invoice - transaction date - amount - tip - 
+
+
+--------------
+c_card (payment_category flag)
+check 
+cash
+
+///////////////////=================================================
+Second database .. sr admin
+
+https://login.ionos.com/?ac=OM.US.USo41K355989T7073a&shoplogin=enabled&linkId=hd.nav.login&ucuoId=PUAC%3Ashopyellow-1964-B.WH.US-20190526143633-26265DDDF6D0B88EB47337F05E6163B9.TCbs4a&fbclid=IwAR1wig-QAknVmaq3sh5Zvlwqgzl-mJrwSl5nqaw6QAHu5ZLq_nzGs8ba-ik
+
+user:615897634
+
+pass:Sarahsameer123!
+
