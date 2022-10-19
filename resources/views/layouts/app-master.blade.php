@@ -52,14 +52,6 @@
     </div> <!-- Main panel in navbar blade --> 
   </div> 
     
-  
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
-
-  @section("scripts")
-
-  @show
 
   <!--   Core JS Files   -->
   <script src="{!! url('assets/js/core/popper.min.js') !!}"></script>

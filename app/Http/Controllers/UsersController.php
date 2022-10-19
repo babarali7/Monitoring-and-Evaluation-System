@@ -126,7 +126,7 @@ class UsersController extends Controller
     }
 
 
-    public function updatepassword(Request $request, $id)
+    public function updatepassword(Request $request)
     {
         $this->validate($request, [ 
             'oldpassword' => 'required',
@@ -141,7 +141,7 @@ class UsersController extends Controller
             if (\Hash::check($request->newpassword , $hashedPassword)) {               
                 
                 // dd("same old password");
-                 session()->flash('success','new password can not be the old password!');
+                 session()->flash('success',array('failed' => 'New password can not be the old password!'));
                  return redirect()->back();
 
             }else{
@@ -152,13 +152,13 @@ class UsersController extends Controller
 
                 $users->password = $request->newpassword;                
                 $users->save();               
-                session()->flash('success','password updated successfully');
+                session()->flash('success','Password updated successfully');
                 return redirect()->back();
             
             } 
         }
         else{
-            session()->flash('success','old password doesnt matched');
+            session()->flash('success',array("failed" => "Old password doesn't matched"));
             return redirect()->back();
         }
     }

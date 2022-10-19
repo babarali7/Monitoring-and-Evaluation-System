@@ -104,7 +104,7 @@
               </a>
              
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <a class="dropdown-item" href="">Change Password</a>
+                <a class="dropdown-item" href="{{ route('users.password') }}">Change Password</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{ route('logout.perform') }}">Log out</a>
               </div>

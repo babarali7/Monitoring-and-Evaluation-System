@@ -2,7 +2,7 @@
     <?php $data = Session::get('success'); ?>
     @if (is_array($data))
         @foreach ($data as $msg)
-            <div class="alert alert-success" >
+            <div class="alert alert-danger" >
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
                     <i class="material-icons">close</i>
                 </button>

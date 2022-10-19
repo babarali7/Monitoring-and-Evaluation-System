@@ -54,8 +54,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
-            Route::get('/{user}/change-password', 'UsersController@changepassword')->name('users.password');
-            Route::patch('/{user}/update-password', 'UsersController@updatepassword')->name('users.updatepassword');
+            Route::get('/change-password', 'UsersController@changepassword')->name('users.password');
+            Route::patch('/update-password', 'UsersController@updatepassword')->name('users.updatepassword');
         });
 
         /**
