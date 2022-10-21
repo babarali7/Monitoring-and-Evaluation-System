@@ -67,7 +67,7 @@ class PermissionsController extends Controller
        ]);
 
         return redirect()->route('permissions.index')
-            ->withSuccess(__('Permission created successfully.'));
+            ->withSuccess(__('Menu created successfully.'));
     }
 
     /**
@@ -79,7 +79,7 @@ class PermissionsController extends Controller
     public function edit(Permission $permission)
     {
        
-        $permissions = Permission::all();
+        $permissions = Permission::where('parent_id',0)->get();
        
         return view('permissions.edit', [
             'permission' => $permission,
@@ -110,7 +110,7 @@ class PermissionsController extends Controller
                             'menu_icon'       => $request->input('menu_icon')
                             ]);
         return redirect()->route('permissions.index')
-            ->withSuccess(__('Permission updated successfully.'));
+            ->withSuccess(__('Menu updated successfully.'));
     }
 
     /**
@@ -124,6 +124,6 @@ class PermissionsController extends Controller
         $permission->delete();
 
         return redirect()->route('permissions.index')
-            ->withSuccess(__('Permission deleted successfully.'));
+            ->withSuccess(__('Menu deleted successfully.'));
     }
 }

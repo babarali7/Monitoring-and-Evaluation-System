@@ -27,7 +27,7 @@
 
         <li class="nav-item ">
           <a class="nav-link" data-toggle="collapse" href="#{{ $navbarItem->menu_name }}">
-            <i class="material-icons">image</i>
+            <i class="material-icons">@if($navbarItem->menu_icon != NULL) {{ $navbarItem->menu_icon }} @else image @endif </i>
             <p> {{ $navbarItem->menu_name }}
               <b class="caret"></b>
             </p>
