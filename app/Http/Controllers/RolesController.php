@@ -40,7 +40,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::get();
+        $permissions = Permission::orderby('parent_id' , 'asc')->get();
         return view('roles.create', compact('permissions'));
     }
     

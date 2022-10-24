@@ -52,6 +52,9 @@
     </div> <!-- Main panel in navbar blade --> 
   </div> 
     
+  @section("scripts")
+
+  @show
 
   <!--   Core JS Files   -->
   <script src="{!! url('assets/js/core/popper.min.js') !!}"></script>
