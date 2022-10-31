@@ -59,7 +59,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         });
 
         /**
-         * User Routes
+         * Post Routes
          */
         Route::group(['prefix' => 'posts'], function() {
             Route::get('/', 'PostsController@index')->name('posts.index');
@@ -69,10 +69,28 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/{post}/edit', 'PostsController@edit')->name('posts.edit');
             Route::patch('/{post}/update', 'PostsController@update')->name('posts.update');
             Route::delete('/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
-        });    
+        });
+        
+        /**
+         * Post Routes
+         */
+        Route::group(['prefix' => 'institute'], function() {
+            Route::get('/', 'InstituteController@index')->name('institute.index');
+            Route::get('/create', 'InstituteController@create')->name('institute.create');
+            Route::post('/create', 'InstituteController@store')->name('institute.store');
+            Route::get('/{institute}/show', 'InstituteController@show')->name('institute.show');
+            Route::get('/{institute}/edit', 'InstituteController@edit')->name('institute.edit');
+            Route::patch('/{institute}/update', 'InstituteController@update')->name('institute.update');
+            Route::delete('/{institute}/delete', 'InstituteController@destroy')->name('institute.destroy');
+        });
    
         
         Route::resource('roles', RolesController::class);
         Route::resource('permissions', PermissionsController::class);
-    });  
+    });
+    
+         /**
+         * Ajax Routes
+         */
+        Route::get('/institute/approve/{id}', 'InstituteController@approve')->name('institute.approve');
 });
