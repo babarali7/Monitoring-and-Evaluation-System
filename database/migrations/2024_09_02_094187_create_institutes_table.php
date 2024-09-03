@@ -15,7 +15,7 @@ class CreateInstitutesTable extends Migration
     {
         Schema::create('institutes', function (Blueprint $table) {
             $table->increments('inst_id');
-            $table->integer('districts_id');
+            $table->unsignedBigInteger('districts_id');
             $table->string('ddo_code')->nullable();
             $table->string('inst_name');
             $table->tinyInteger('type');

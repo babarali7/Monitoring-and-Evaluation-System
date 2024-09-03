@@ -93,4 +93,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
          * Ajax Routes
          */
         Route::get('/institute/approve/{id}', 'InstituteController@approve')->name('institute.approve');
+        
 });
