@@ -12,6 +12,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
+
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -41,9 +43,11 @@ class AppServiceProvider extends ServiceProvider
             if (Auth::check()) { 
                
              //    dd(auth()->user());
+            
+            // DB::enableQueryLog();
 
             $user = new User;
-            $navbars = auth()->user()->getAllPermissions()->whereNotIn('id',11)->whereNotIn('parent_id',11)
+            $navbars = auth()->user()->getAllPermissions()->where('display_menu',1)
             ->sortBy([
                      'parent_id', 'asc',
                      'sort_order', 'asc']);
@@ -51,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
                      // $users = $navbars::with('permissions')->get();
            
           // $users = $navbars::where('parent_id',0);
-          // dd($navbars);
+         // dd(DB::getQueryLog());
    
          
            // $navbars = Permission::orderBy('id')->get();

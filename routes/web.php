@@ -72,7 +72,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         });
         
         /**
-         * Post Routes
+         * Institute Routes
          */
         Route::group(['prefix' => 'institute'], function() {
             Route::get('/', 'InstituteController@index')->name('institute.index');

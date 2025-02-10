@@ -21,6 +21,15 @@
                 <div>
                     Username: {{ $user->username }}
                 </div>
+                <div>
+                    Institute: {{ $user->institute->inst_name }}
+                </div>
+                <div>
+                    Role: 
+                    @foreach($user->roles as $role)
+                        <span class="badge bg-primary">{{ $role->name }}</span>
+                    @endforeach
+                </div>
             </div>
 
         </div>

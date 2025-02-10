@@ -19,7 +19,7 @@ class InstituteController extends Controller
         //
         $institute = Institute::all();
 
-        $districts = DB::table('districts') ->get();
+        $districts = DB::table('districts')->get();
        
         return view('institute.index', [
             'institute' => $institute,

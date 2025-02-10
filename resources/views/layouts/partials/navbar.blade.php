@@ -100,7 +100,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>
-                   {{ auth()->user()->name }}
+                   {{ auth()->user()->name  }}
               </a>
              
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">

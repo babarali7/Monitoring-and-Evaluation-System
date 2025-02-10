@@ -81,7 +81,19 @@
                                     class="form-control" 
                                     name="menu_icon" 
                                     placeholder="">
-                            
+                            </div>
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                  <input class="form-check-input" type="checkbox" value="1" name="display_menu" class="display_menu" 
+                                  @if($permission->display_menu == 1 ) 
+                                    checked 
+                                  @else 
+                                  @endif> Display in Menu
+                                  <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                                </label>
                             </div>
 
                             <button type="submit" class="btn btn-rose">Update Menu</button>

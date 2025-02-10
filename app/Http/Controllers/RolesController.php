@@ -40,7 +40,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::orderby('parent_id' , 'asc')->get();
+        $permissions = Permission::orderByRaw('parent_id, sort_order ASC')->get();
         return view('roles.create', compact('permissions'));
     }
     
@@ -88,7 +88,7 @@ class RolesController extends Controller
     {
         $role = $role;
         $rolePermissions = $role->permissions->pluck('name')->toArray();
-        $permissions = Permission::get();
+        $permissions = Permission::orderByRaw('parent_id, sort_order ASC')->get();
     
         return view('roles.edit', compact('role', 'rolePermissions', 'permissions'));
     }

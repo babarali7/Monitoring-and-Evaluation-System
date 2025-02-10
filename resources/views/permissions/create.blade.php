@@ -67,6 +67,15 @@
                                 >
                         </div>
 
+                        <div class="form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox" value="1" name="display_menu" class="display_menu"> Display in Menu
+                              <span class="form-check-sign">
+                                <span class="check"></span>
+                              </span>
+                            </label>
+                          </div>
+
 
                     </div>
                     <div class="card-footer ">

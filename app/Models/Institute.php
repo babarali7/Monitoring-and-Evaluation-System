@@ -15,5 +15,9 @@ class Institute extends Model
   
     protected $guarded  = ['inst_id'];
 
-    
+    public function users()
+    {
+        return $this->hasMany(User::class, 'inst_id', 'inst_id');
+    }
+
 }

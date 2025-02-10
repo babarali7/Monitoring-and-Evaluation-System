@@ -48,6 +48,15 @@
                         @endif
                     </div>
 
+                    <div class="form-group">
+                        <label for="Institute" class="bmd-label-floating">Select Institute</label>
+                        <select class="selectpicker" data-live-search="true" data-style="btn btn-primary" title="Select Institute" searchable="Search here.." name="inst_id" id="inst_id">
+                            @foreach($institute as $ins)
+                                <option value="{{ $ins->inst_id }}"> {{ $ins->inst_name }} </option>
+                            @endforeach   
+                        </select>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Save user</button>
                     <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
                 </form>

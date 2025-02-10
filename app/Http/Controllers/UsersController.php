@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -21,7 +22,13 @@ class UsersController extends Controller
      */
     public function index() 
     {
-        $users = User::latest()->paginate(10);
+        $users = User::with(['institute' => function ($query) {
+            $query->select('inst_id', 'inst_name');
+        }])->latest()->paginate(10);
+
+      // $users = User::with('institute')->get();
+
+       // dd($users);
 
         return view('users.index', compact('users'));
     }
@@ -33,7 +40,12 @@ class UsersController extends Controller
      */
     public function create() 
     {
-        return view('users.create');
+        
+        $institutes = DB::table('institutes')->select('inst_id','inst_name')->get();
+        return view('users.create',[
+            'institute' => $institutes
+        ]);
+
     }
 
     /**
@@ -48,6 +60,8 @@ class UsersController extends Controller
     {
         //For demo purposes only. When creating user or inviting a user
         // you should create a generated random password and email it to the user
+        //dd($request);
+        
         $user->create(array_merge($request->validated(), [
             'password' => '12345678' 
         ]));
@@ -79,10 +93,13 @@ class UsersController extends Controller
      */
     public function edit(User $user) 
     {
+        
+        $institutes = DB::table('institutes')->select('inst_id','inst_name')->get();
         return view('users.edit', [
             'user' => $user,
             'userRole' => $user->roles->pluck('name')->toArray(),
-            'roles' => Role::latest()->get()
+            'roles' => Role::latest()->get(),
+            'institutes' => $institutes
         ]);
     }
 

@@ -11,7 +11,8 @@ $type = array(
           5 => "HO", 
           6 => "EMP - EXC",
           7 => "SDC",
-          8 => "NMD" 
+          8 => "NMD",
+          9 =>  "OTHER"
       );
 
 $district_name = array();
@@ -292,13 +293,15 @@ foreach ($districts as $ds) {
                                 <td> {{ $district_name[$ins->districts_id] }} </td>
                                 <td> {{ $type[$ins->type] }} </td>
                                 <td> {{ $ins->ins_gender }} </td>
-                                <td> <a onClick='getInfo({{ $ins->inst_id }});' class='btn btn-link btn-info btn-just-icon' data-toggle='modal' data-target='#noticeModal'><i class='material-icons'>dvr</i>
-                                     <a onClick='updateInfo({{ $ins->inst_id }});' class='btn btn-link btn-warning btn-just-icon edit'> <i class='fa fa-edit'></i> </a>   
+                                <td> 
+                                    @can('institute.index')
+                                    <a onClick='getInfo({{ $ins->inst_id }});' class='btn btn-link btn-info btn-just-icon' data-toggle='modal' data-target='#noticeModal'><i class='material-icons'>dvr</i>
+                                    @endcan
+                                    <a onClick='updateInfo({{ $ins->inst_id }});' class='btn btn-link btn-warning btn-just-icon edit'> <i class='fa fa-edit'></i> </a>   
                                      {{-- <a href='delete_ins/{{ $ins->inst_id }}' onclick='return confirm(\"Are you sure you want to delete ?\");' class='btn btn-link btn-danger btn-just-icon remove'><i class='material-icons'>close</i></a> --}}
                                      {!! Form::open(['method' => 'DELETE','route' => ['institute.destroy', $ins->inst_id],'style'=>'display:inline', 'onClick'=>'return confirm("Are you sure you want to delete ?");']) !!}
                                      {!! Form::button('<i class="material-icons">close</i>', ['type' => 'submit', 'class' => 'btn btn-link btn-danger btn-just-icon remove']) !!}
                                      {!! Form::close() !!}
-
                                 </td>                            
                             </tr>    
                             @endforeach
@@ -390,7 +393,7 @@ foreach ($districts as $ds) {
 
 function getInfo(id) {
      
-     var type = new Array("","GCT","GPI","GTVC","SVTI","HO", "EMP - EXC","SDC","NMD");
+     var type = new Array("","GCT","GPI","GTVC","SVTI","HO", "EMP - EXC","SDC","NMD","OTHER");
      
      var getdis = "";
 

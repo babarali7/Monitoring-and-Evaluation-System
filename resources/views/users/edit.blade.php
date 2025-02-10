@@ -46,7 +46,6 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        
                         <select 
                             name="role" class="selectpicker" data-live-search="true" data-style="btn btn-primary" title="Select Role" searchable="Search here.." required>
                             
@@ -59,6 +58,17 @@
                         </select>
                         @if ($errors->has('role'))
                             <span class="text-danger text-left">{{ $errors->first('role') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="mb-3">
+                        <select class="selectpicker" data-live-search="true" data-style="btn btn-primary" title="Select Institute" searchable="Search here.." name="inst_id" id="inst_id" required>
+                            @foreach($institutes as $ins)
+                                <option value="{{ $ins->inst_id }}" {{ $ins->inst_id == $user->inst_id ? 'selected' : '' }}> {{ $ins->inst_name }} </option>
+                            @endforeach   
+                        </select>
+                        @if ($errors->has('inst_id'))
+                            <span class="text-danger text-left">{{ $errors->first('inst_id') }}</span>
                         @endif
                     </div>
 

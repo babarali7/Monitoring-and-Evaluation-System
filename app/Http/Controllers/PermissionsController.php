@@ -22,6 +22,7 @@ class PermissionsController extends Controller
         $detail = DB::table('permissions as p')
                     ->leftJoin('permissions as pf', 'p.parent_id', '=', 'pf.id')
                     ->select('p.*', 'pf.menu_name as parent_title')
+                    ->orderByRaw('p.parent_id,p.sort_order ASC')
                     ->get();
        
         return view('permissions.index', [
@@ -63,7 +64,8 @@ class PermissionsController extends Controller
             'menu_name'       => $request->input('menu_name'),
             'parent_id'       => $request->input('parent'),
             'sort_order'      => $request->input('sort_order'),
-            'menu_icon'       => $request->input('menu_icon')
+            'menu_icon'       => $request->input('menu_icon'),
+            'display_menu'    => $request->input('display_menu')
        ]);
 
         return redirect()->route('permissions.index')
@@ -107,7 +109,8 @@ class PermissionsController extends Controller
                             'menu_name'       => $request->input('menu_name'),
                             'parent_id'       => $request->input('parent'),
                             'sort_order'      => $request->input('sort_order'),
-                            'menu_icon'       => $request->input('menu_icon')
+                            'menu_icon'       => $request->input('menu_icon'),
+                            'display_menu'    => $request->input('display_menu')
                             ]);
         return redirect()->route('permissions.index')
             ->withSuccess(__('Menu updated successfully.'));

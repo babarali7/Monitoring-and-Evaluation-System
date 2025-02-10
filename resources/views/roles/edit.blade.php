@@ -43,9 +43,11 @@
                             <th class="text-danger" scope="col" width="20%">Menu Name</th>
                             <th class="text-danger" scope="col" width="20%">Url</th>
                             <th class="text-danger" scope="col" width="1%">Guard</th> 
+                            <th class="text-danger" scope="col" width="10%">Display</th>
                         </thead>
 
                         @foreach($permissions as $permission)
+                        @if($permission->parent_id == 0)
                             <tr>
                                 <td>
                                     <input type="checkbox" 
@@ -56,10 +58,33 @@
                                         ? 'checked'
                                         : '' }}>
                                 </td>
-                                <td>{{ $permission->menu_name }}</td>
+                                <td><b>{{ $permission->menu_name }}</b></td>
                                 <td>{{ $permission->name }}</td>
                                 <td>{{ $permission->guard_name }}</td>
+                                <td>{{ ($permission->display_menu == 1) ? "Yes" : "NO"  }} </td>
                             </tr>
+
+                            @foreach ($permissions as $navbarsubItem)
+                            @if($navbarsubItem->parent_id != 0 && $navbarsubItem->parent_id == $permission->id)
+                            <tr>
+                                <td>
+                                    <input type="checkbox" 
+                                    name="permission[{{ $navbarsubItem->name }}]"
+                                    value="{{ $navbarsubItem->name }}"
+                                    class='permission'
+                                    {{ in_array($navbarsubItem->name, $rolePermissions) 
+                                        ? 'checked'
+                                        : '' }}>
+                                </td>
+                                <td>{{ $navbarsubItem->menu_name }}</td>
+                                <td>{{ $navbarsubItem->name }}</td>
+                                <td>{{ $navbarsubItem->guard_name }}</td>
+                                <td>{!! ($navbarsubItem->display_menu == 1) ? "Yes" : "<span class='text-danger'>NO</span>"  !!} </td>
+                            </tr>
+                            @endif
+                            @endforeach
+
+                        @endif    
                         @endforeach
                     </table>
 
