@@ -5,21 +5,18 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.54",
-        "laravel/sanctum": "^2.11",
+        "php": "^7.3|^8.0|^8.2",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "10.48.23",
+        "laravel/sanctum": "3.3",
         "laravel/tinker": "^2.5",
-        "laravelcollective/html": "^6.3",
+        "spatie/laravel-html": "^3.11",
         "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {
-        "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
+        "nunomaduro/collision": "6.0",
         "phpunit/phpunit": "^9.3.3"
     },
     "autoload": {
@@ -27,7 +24,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "exclude-from-classmap": [
+        "vendor/league/flysystem-local/*"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
