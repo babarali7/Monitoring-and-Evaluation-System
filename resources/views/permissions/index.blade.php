@@ -44,9 +44,15 @@
                         @endif </td> 
                         <td><a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info btn-sm">Edit</a>
                             
-                            {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline', 'onClick' => 'return confirm("Are you sure you want to delete ?");']) !!}
+                            {{-- {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $permission->id],'style'=>'display:inline', 'onClick' => 'return confirm("Are you sure you want to delete ?");']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                            {!! Form::close() !!}
+                            {!! Form::close() !!} --}}
+
+                            <form method="POST" action="{{ route('permissions.destroy', $permission->id) }}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
                             
                         </td>
                     </tr>
@@ -68,9 +74,15 @@
                             @endif </td> 
                             <td><a href="{{ route('permissions.edit', $navbarsubItem->id) }}" class="btn btn-info btn-sm">Edit</a>
                                 
-                                {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $navbarsubItem->id],'style'=>'display:inline', 'onClick' => 'return confirm("Are you sure you want to delete ?");']) !!}
+                                {{-- {!! Form::open(['method' => 'DELETE','route' => ['permissions.destroy', $navbarsubItem->id],'style'=>'display:inline', 'onClick' => 'return confirm("Are you sure you want to delete ?");']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                                {!! Form::close() !!}
+                                {!! Form::close() !!} --}}
+
+                                <form method="POST" action="{{ route('permissions.destroy', $navbarsubItem->id) }}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
                                 
                             </td>
                         </tr>

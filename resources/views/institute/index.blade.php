@@ -299,9 +299,17 @@ foreach ($districts as $ds) {
                                     @endcan
                                     <a onClick='updateInfo({{ $ins->inst_id }});' class='btn btn-link btn-warning btn-just-icon edit'> <i class='fa fa-edit'></i> </a>   
                                      {{-- <a href='delete_ins/{{ $ins->inst_id }}' onclick='return confirm(\"Are you sure you want to delete ?\");' class='btn btn-link btn-danger btn-just-icon remove'><i class='material-icons'>close</i></a> --}}
-                                     {!! Form::open(['method' => 'DELETE','route' => ['institute.destroy', $ins->inst_id],'style'=>'display:inline', 'onClick'=>'return confirm("Are you sure you want to delete ?");']) !!}
+                                     {{-- {!! Form::open(['method' => 'DELETE','route' => ['institute.destroy', $ins->inst_id],'style'=>'display:inline', 'onClick'=>'return confirm("Are you sure you want to delete ?");']) !!}
                                      {!! Form::button('<i class="material-icons">close</i>', ['type' => 'submit', 'class' => 'btn btn-link btn-danger btn-just-icon remove']) !!}
-                                     {!! Form::close() !!}
+                                     {!! Form::close() !!} --}}
+                                     <form method="POST" action="{{ route('institute.destroy', $ins->inst_id) }}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-link btn-danger btn-just-icon remove">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </form>
+
                                 </td>                            
                             </tr>    
                             @endforeach

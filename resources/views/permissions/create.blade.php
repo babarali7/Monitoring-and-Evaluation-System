@@ -74,7 +74,7 @@
                                 <span class="check"></span>
                               </span>
                             </label>
-                          </div>
+                        </div>
 
 
                     </div>
